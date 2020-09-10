@@ -1,45 +1,32 @@
-'use strict';
+"use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Runways', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
+    await queryInterface.createTable("Runways", {
       airportid: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        primaryKey: true,
       },
       designator: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       length: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       width: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       compcode: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       lightactv: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       lightintns: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Runways');
-  }
+    await queryInterface.dropTable("Runways");
+  },
 };
