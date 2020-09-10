@@ -4,7 +4,6 @@ module.exports = {
     await queryInterface.createTable("Runways", {
       airportid: {
         type: Sequelize.STRING,
-        primaryKey: true,
       },
       designator: {
         type: Sequelize.STRING,
