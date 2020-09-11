@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const UserModel = require("../models").User;
+const AircraftModel = require("../models").Aircraft;
 
 // GET USERS PROFILE
-router.get("/profile/:id", async (req, res) => {
-  let user = await UserModel.findByPk(req.params.id);
-  res.json({ user });
+router.get("/:registration", async (req, res) => {
+  let aircraft = await AircraftModel.findAll({
+    where: { registration: req.params.registration },
+  });
+  res.json({ aircraft });
 });
 
 module.exports = router;
