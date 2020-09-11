@@ -8,14 +8,17 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Airport.hasMany(models.Runway), { foreignKey: "airportId" };
+      Airport.hasMany(models.Runway), { foreignKey: "globalid" };
     }
   }
   Airport.init(
     {
       latitude: DataTypes.STRING,
       longitude: DataTypes.STRING,
-      globalid: DataTypes.STRING,
+      globalid: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+      },
       ident: DataTypes.STRING,
       name: DataTypes.STRING,
       elevation: DataTypes.INTEGER,
@@ -27,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "Airport",
+      timestamps: false,
     }
   );
   return Airport;

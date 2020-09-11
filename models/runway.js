@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Runway.belongsTo(models.Airport, { foreignKey: "globalid" });
+      Runway.belongsTo(models.Airport, { foreignKey: "airportid" });
     }
   }
   Runway.init(
@@ -20,10 +20,12 @@ module.exports = (sequelize, DataTypes) => {
       compcode: DataTypes.STRING,
       lightactv: DataTypes.INTEGER,
       lightintns: DataTypes.STRING,
+      AirportGlobalid: DataTypes.STRING,
     },
     {
       sequelize,
       modelName: "Runway",
+      timestamps: false,
     }
   );
   return Runway;
